@@ -4,3 +4,16 @@
   padding: 30px;
   background: #ececec;
 }
+
+.ant-divider-horizontal.ant-divider-with-text::after,.ant-divider-horizontal.ant-divider-with-text::before {
+  border-top: 1px solid black;
+}
+
+.top-news-row.ant-row {
+  flex-flow: nowrap;
+  overflow-x: scroll;
+}
+
+
+
+
