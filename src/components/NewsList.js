@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { fetchList } from "../redux";
 import { goToDetails } from "../redux";
 import { Card, Col, Row, Space, Spin, Divider } from "antd";
 import { apiKey } from "../constants";
@@ -88,7 +87,7 @@ class NewsList extends React.Component {
                 style={{ width: 320 }}
                 cover={
                   <img
-                    alt="example"
+                    alt=""
                     src={
                       data.urlToImage !== "null" && data.urlToImage
                         ? data.urlToImage
@@ -158,59 +157,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsList);
-
-// function NewsList(props) {
-// //   // console.log("source id: "+newsList.sourceId)
-//   const [Id, setSourceId] = useState(props.sourceId)
-
-//   useEffect(() => {
-//     props.fetchList(Id);
-//   }, [Id]);
-
-//   return props.newsList.loading ? (
-//     <h2>Loading</h2>
-//   ) : props.newsList.error ? (
-//     <h2>{props.newsList.error}</h2>
-//   ) : (
-//     <div className="site-card-wrapper">
-//       <h2>{Id}</h2>
-//       <Row gutter={15}>
-//         {props.newsList.list.map((data) => (
-//           <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-//             <Card
-//               hoverable
-//               style={{ width: 320 }}
-//               cover={
-//                 <img
-//                   alt="example"
-//                   src={
-//                     data.urlToImage !== "null" && data.urlToImage
-//                       ? data.urlToImage
-//                       : "https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg"
-//                   }
-//                 />
-//               }
-//             >
-//               <Meta title={data.title} description={data.publishedAt} />
-//             </Card>
-//           </Col>
-//         ))}
-//       </Row>
-//     </div>
-//   );
-// }
-
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     newsList: state.newsList,
-//     sourceId: ownProps.sourceId
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchList: (sourceId) => dispatch(fetchList(sourceId)),
-//   };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(NewsList);

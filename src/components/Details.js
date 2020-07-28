@@ -1,8 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { Card, Col, Row, Divider, PageHeader, Descriptions } from "antd";
+import { Card, Col, Row, Divider, PageHeader } from "antd";
 import { goToDetails } from "../redux";
 import { goToHome } from "../redux";
 
@@ -14,13 +13,6 @@ function Details() {
   const dispatch = useDispatch();
   return (
     <div>
-      {/* <div>
-                
-                <button onClick={()=>dispatch(goToHome(sourceId))}>back</button>
-                {details.content}
-                {details.author}
-            </div> */}
-
       <div className="site-card-wrapper">
         <PageHeader
           ghost={false}
@@ -29,15 +21,22 @@ function Details() {
         >
           <Row>
             <Col xs={{ span: 24 }} lg={{ span: 7 }}>
-              <img className="detailsImage" src={details.urlToImage}></img>
+              <img
+                className="detailsImage"
+                src={
+                  details.urlToImage !== "null" && details.urlToImage
+                    ? details.urlToImage
+                    : "https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg"
+                }
+              ></img>
             </Col>
             <Col className="details-content" xs={{ span: 24 }} lg={{ span: 6 }}>
               <div>Published at: {details.publishedAt}</div>
-              <br/>
+              <br />
               <div>{details.content}</div>
               <br />
               <div>
-                Full article: <a href={details.url}>Go to website</a>
+                Full article: <a href={details.url}>Click here</a>
               </div>
             </Col>
           </Row>
@@ -88,17 +87,5 @@ function Details() {
     </div>
   );
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     details: state.page.details
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     goToHome: () => dispatch(goToHome()),
-//   };
-// };
 
 export default Details;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiKey } from '../../constants'
+import { apiKey } from "../../constants";
 
 import {
   FETCH_SOURCES_REQUEST,
@@ -31,11 +31,9 @@ export const fetchSources = () => {
   return (dispatch) => {
     dispatch(fetchSourcesRequest());
     axios
-      .get(
-        "https://newsapi.org/v2/sources?language=en&apiKey="+apiKey
-      )
+      .get("https://newsapi.org/v2/sources?language=en&apiKey=" + apiKey)
       .then((response) => {
-        const sources = response.data.sources
+        const sources = response.data.sources;
         dispatch(fetchSourcesSuccess(sources));
       })
       .catch((error) => {
