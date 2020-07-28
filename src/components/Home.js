@@ -60,9 +60,9 @@ function Home (props) {
     <h2>{sourceList.error}</h2>
   ) : (
          <div>
-        <Tabs activeKey={sourceId} onChange={(activeKey) => {dispatch(goToHome({sourceId:activeKey}))}}>
+        <Tabs type="card" activeKey={sourceId} onChange={(activeKey) => {dispatch(goToHome({sourceId:activeKey}))}}>
           {sourceList.sources.map((data) => (
-            <TabPane tab={data.name} key={data.id} >
+            <TabPane className="ml10" tab={data.name} key={data.id} >
               <NewsList sourceName={data.name} key={data.id}></NewsList>
             </TabPane>
           ))}
