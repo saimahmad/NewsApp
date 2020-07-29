@@ -28,10 +28,11 @@ export const fetchSourcesFailure = (error) => {
 };
 
 export const fetchSources = () => {
+  const proxyUrl = "http://cors-anywhere.herokuapp.com/"
   return (dispatch) => {
     dispatch(fetchSourcesRequest());
     axios
-      .get("https://newsapi.org/v2/sources?language=en&apiKey=" + apiKey)
+      .get(proxyUrl+"http://newsapi.org/v2/sources?language=en&apiKey=" + apiKey)
       .then((response) => {
         const sources = response.data.sources;
         dispatch(fetchSourcesSuccess(sources));
